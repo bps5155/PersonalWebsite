@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.get('/test', (req, res) => {
+app.post('/test', (req, res) => {
     console.log("sending home page");
     res.send('Hello World!');
 });

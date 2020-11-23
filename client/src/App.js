@@ -14,7 +14,7 @@ class App extends React.Component {
   checkLoggedInFetch = async () => {
     console.log("fetching")
     var response = await fetch(
-        "http://localhost:5000/test", 
+        "/test", 
         {
           credentials: 'include',
           method: "post",
