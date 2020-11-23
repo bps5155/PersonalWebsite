@@ -9,7 +9,10 @@ app.get('/', (req, res) => {
 
 app.post('/test', (req, res) => {
     console.log("sending home page");
-    res.send('Hello World!');
+    res.send({
+        msg:'Hello World!',
+        msg2:"this is /test route"
+    });
 });
 
 

@@ -29,20 +29,18 @@ class App extends React.Component {
     );
     const data = await response.json();
     //put checking here
+    console.log("data: ")
     console.log(data)
   }
   render() {
     console.log("rendering")
     this.checkLoggedInFetch()
     return (
-      <div>
-        hey
-      </div>
-    // <Router> 
-    //   <Fragment>
-    //     <Route exact path = '/' component = { Landing } />
-    //   </Fragment>
-    // </Router>
+    <Router> 
+      <Fragment>
+        <Route exact path = '/' component = { Landing } />
+      </Fragment>
+    </Router>
     )
   }
 
