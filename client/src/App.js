@@ -7,14 +7,15 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      sampledata: "sample"
+      message: ''
     }
-    this.checkLoggedInFetch = this.checkLoggedInFetch.bind(this)
+    this.messagePost = this.messagePost.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
-  checkLoggedInFetch = async () => {
+  messagePost = async () => {
     console.log("fetching")
     var response = await fetch(
-        "/test", 
+        "/postMessage", 
         {
           credentials: 'include',
           method: "post",
@@ -24,6 +25,7 @@ class App extends React.Component {
           },
           //make sure to serialize your JSON body
           body: JSON.stringify({
+            message: this.state.message
           })
         }
     );
@@ -32,15 +34,29 @@ class App extends React.Component {
     console.log("data: ")
     console.log(data)
   }
+  handleChange(event) {
+    this.setState((state) => { 
+      return({
+        message: event.target.value
+      })
+    })
+
+  }
   render() {
     console.log("rendering")
-    this.checkLoggedInFetch()
+    console.log(this.state.message)
+
+    // this.messagePost()
     return (
+      <div>
+     <input type="text" id="inputText" value = {this.state.message} name="inputText" onChange = {this.handleChange}/>
+        <button onClick = { this.messagePost} id="dbButton">post message </button>
     <Router> 
       <Fragment>
         <Route exact path = '/' component = { Landing } />
       </Fragment>
     </Router>
+    </div>
     )
   }
 

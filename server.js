@@ -1,14 +1,27 @@
 const express = require("express");
+const connectDB = require('./config/db')
+const Message = require('./models/Messages.js');
+
 const app = express();
-//const port = 5000;
+
+connectDB();
+
 
 app.get('/', (req, res) => {
     console.log("sending home page");
     res.send('Hello World!');
 });
 
-app.post('/test', (req, res) => {
-    console.log("sending home page");
+app.post('/postMessage', (req, res) => {
+    console.log("post message route")
+    message = new Message({
+        message: "sample message"
+    });
+    
+    message.save();
+    
+    console.log(req)
+
     res.send({
         msg:'Hello World!',
         msg2:"this is /test route"
